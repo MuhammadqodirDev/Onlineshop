@@ -19,7 +19,7 @@
                                         <h2 class="title-1">Your Home <br>
                                         Smart Devices & <br>
                                          Best Solution </h2>
-                                        <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
                                     </div>
                                 </div>
                                 {% comment %} <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
@@ -42,7 +42,7 @@
                                         <h2 class="title-1">Your Home <br>
                                         Smart Devices & <br>
                                          Best Solution </h2>
-                                        <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
                                     </div>
                                 </div>
                                 {% comment %} <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
@@ -76,7 +76,7 @@
                             <div class="banner-content nth-child-1">
                                 <h3 class="title">Laptops For <br>
                                 Your Business</h3>
-                                <span class="category">From $29.00</span>
+                                <span class="category">From $499.0</span>
                                 <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                             <img src="{% static 'assets/images/banner/4.webp' %}" alt="">
                             <div class="banner-content nth-child-2">
                                 <h3 class="title">Headphones</h3>
-                                <span class="category">From $95.00</span>
+                                <span class="category">From $9.90</span>
                                 <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             <img src="{% static 'assets/images/banner/5.webp' %}" alt="">
                             <div class="banner-content nth-child-3">
                                 <h3 class="title">Smartphone</h3>
-                                <span class="category">From $69.00</span>
+                                <span class="category">From $159.00</span>
                                 <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -145,7 +145,11 @@
                                                 {% if product.discount != 0 %}
                                                     <span class="sale">-{{product.discount}}</span>
                                                 {% endif %}
-                                                <span class="new">New</span>
+                                                
+                                                {% if product.new == True %}
+                                                    <span class="new">New</span>   
+                                                {% endif %}
+                                                    
                                             </span>
                                             <div class="thumb">
                                                 <a href="single-product.html" class="image">
@@ -446,7 +450,7 @@
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 text-center">
                         <h2 class="title"> <span>Smart Fashion</span> With Smart Devices </h2>
-                        <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize m-auto">Shop All Devices</a>
+                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize m-auto">Shop All Devices</a>
                     </div>
                 </div>
             </div>

@@ -16,17 +16,19 @@ class Product(models.Model):
     name = models.CharField(max_length=150)
     characters = models.TextField()
     image = models.ImageField(upload_to='products/')
-    category = models.ForeignKey(Category, on_delete=CASCADE)
+    category = models.ForeignKey(Category, related_name='product', on_delete=CASCADE)
     price = models.PositiveIntegerField()
     discount = models.PositiveIntegerField(default=0)
     # old_price = models.PositiveIntegerField(null=True, blank=True)
-    slug = models.SlugField('*', blank=True)
+    slug = models.SlugField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     new  = models.BooleanField(default=True, blank=True),
     qrcode = models.ImageField(upload_to='product_qrcodes/', blank=True, null=True)
+    new = models.BooleanField(default=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
+    
     
 
 

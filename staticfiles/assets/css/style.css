@@ -6189,6 +6189,11 @@ body.offcanvas-open {
   bottom: 0;
 }
 
+.modal {
+  height: auto !important;
+  padding-bottom: 10rem !important;
+}
+
 .modal-dialog {
   margin: 0% auto;
   max-width: 960px;
@@ -6238,7 +6243,7 @@ body.offcanvas-open {
 .modal-dialog .btn-close {
   position: absolute;
   top: 0;
-  right: -35px;
+  right: -36px;
   color: #fff;
   border: 1px solid #266bf9;
   padding: 0px;
