@@ -19,16 +19,16 @@
                                         <h2 class="title-1">Your Home <br>
                                         Smart Devices & <br>
                                          Best Solution </h2>
-                                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                                        <a href="{% url 'products_page'  %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
                                     </div>
                                 </div>
-                                {% comment %} <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
+                                <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
                                     <div class="show-case">
                                         <div class="hero-slide-image">
                                             <img src="{% static 'assets/images/hero/inner-img/hero-1-1.png' %}" alt="" />
                                         </div>
                                     </div>
-                                </div> {% endcomment %}
+                                </div>  -->
                             </div>
                         </div>
                     </div>
@@ -42,16 +42,9 @@
                                         <h2 class="title-1">Your Home <br>
                                         Smart Devices & <br>
                                          Best Solution </h2>
-                                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                                        <a href="{% url 'products_page' %}" class="btn btn-primary text-capitalize">Shop All Devices</a>
                                     </div>
                                 </div>
-                                {% comment %} <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
-                                    <div class="show-case">
-                                        <div class="hero-slide-image">
-                                            <img src="{% static 'assets/images/hero/inner-img/hero-1-2.png' %}" alt="" />
-                                        </div>
-                                    </div>
-                                </div> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -119,7 +112,7 @@
                                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#newarrivals">New arrivals</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{% url 'products' %}"><button class="nav-link text-inline" data-bs-toggle="tab" data-bs-target="">
+                                    <a href="{% url 'products_page' %}"><button class="nav-link text-inline" data-bs-toggle="tab" data-bs-target="">
                                          All Products
                                     </button>
                                     </a>
@@ -218,31 +211,30 @@
                             <!-- 2rd tab start -->
                             <div class="tab-pane fade" id="indiscount">
                                 <div class="row">
-                                    {% for d_product in d_products %}
-                                    {% if d_product.discount != 0 %}
+                                    {% for product in d_products %}
+                                    {% if product.discount != 0 %}
                                     <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                                        <!-- Single Prodect -->
                                         <div class="product">
                                             <span class="badges">
                                                 
-                                                {% if d_product.discount != 0 %}
-                                                    <span class="sale">-{{d_product.discount}}</span>
+                                                {% if product.discount != 0 %}
+                                                    <span class="sale">-{{product.discount}}</span>
                                                 {% endif %}
                                                 <span class="new">New</span>
                                             </span>
                                             <div class="thumb">
                                                 <a href="single-product.html" class="image">
-                                                    <img src="{{ d_product.image.url }}" alt="Product" />
-                                                    <img class="hover-image" src="{{ d_product.image.url }}" alt="Product" />
+                                                    <img src="{{ product.image.url }}" alt="Product" />
+                                                    <img class="hover-image" src="{{ product.image.url }}" alt="Product" />
                                                 </a>
                                             </div>
                                             <div class="content">
-                                                <span class="category"><a href="#">{{ d_product.category }}</a></span>
-                                                <h5 class="title"><a href="single-product.html">{{ d_product.name }}
+                                                <span class="category"><a href="#">{{ product.category }}</a></span>
+                                                <h5 class="title"><a href="single-product.html">{{ product.name }}
                                                     </a>
                                                 </h5>
                                                 <span class="price">
-                                                    <span class="new">${{d_product.price}}</span>
+                                                    <span class="new">${{product.price}}</span>
                                                 </span>
                                             </div>
                                             <div class="actions">
@@ -256,107 +248,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="product-details-content quickview-content">
-                                            <h2>Modern Smart Phone</h2>
-                                            <div class="pricing-meta">
-                                                <ul class="d-flex">
-                                                    <li class="new-price">$20.90</li>
-                                                </ul>
-                                            </div>
-                                            <div class="pro-details-rating-wrap">
-                                                <div class="rating-product">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <span class="read-review"><a class="reviews" href="#">( 2 Review )</a></span>
-                                            </div>
-                                            <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
-                                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                                <span>SKU:</span>
-                                                <ul class="d-flex">
-                                                    <li>
-                                                        <a href="#">Ch-256xl</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                                <span>Categories: </span>
-                                                <ul class="d-flex">
-                                                    <li>
-                                                        <a href="#">Smart Device, </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">ETC</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                                <span>Tags: </span>
-                                                <ul class="d-flex">
-                                                    <li>
-                                                        <a href="#">Smart Device, </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Phone</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pro-details-quality">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                </div>
-                                                <div class="pro-details-cart">
-                                                    <button class="add-cart"> Add To
-                                                        Cart</button>
-                                                </div>
-                                                <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                                    <a href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="payment-img">
-                                                <a href="#"><img src="{% static 'assets/images/icons/payment.png' %}" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     {% endif %}
                                     {% endfor %}
-                                    <!-- <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                                      <div class="product">
-                                            <span class="badges">
-                                                <span class="sale">-10%</span>
-                                            <span class="new">New</span>
-                                            </span>
-                                            <div class="thumb">
-                                                <a href="single-product.html" class="image">
-                                                    <img src="{% static 'assets/images/product-image/2.webp' %}" alt="Product" />
-                                                    <img class="hover-image" src="{% static 'assets/images/product-image/2.webp' %}" alt="Product" />
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <span class="category"><a href="#">Accessories</a></span>
-                                                <h5 class="title"><a href="single-product.html">Bluetooth Headphone
-                                                    </a>
-                                                </h5>
-                                                <span class="price">
-                                                    <span class="old">$48.50</span>
-                                                <span class="new">$38.50</span>
-                                                </span>
-                                            </div>
-                                            <div class="actions">
-                                                <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                                    class="pe-7s-shopbag"></i></button>
-                                                <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                                        class="pe-7s-like"></i></button>
-                                                <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                                <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                                        class="pe-7s-refresh-2"></i></button>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                             <!-- 2rd tab end -->
@@ -364,30 +257,31 @@
                             <div class="tab-pane fade" id="newarrivals">
                                 <div class="row">
                                     
-                                    {% for n_product in n_products %}
+                                    {% for product in n_products %}
+                                    {% if product.new == True %}
                                     <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                         <!-- Single Prodect -->
                                         <div class="product">
                                             <span class="badges">
                                                 
-                                                {% if n_product.discount != 0 %}
-                                                    <span class="sale">-{{n_product.discount}}</span>
+                                                {% if product.discount != 0 %}
+                                                    <span class="sale">-{{product.discount}}</span>
                                                 {% endif %}
                                                 <span class="new">New</span>
                                             </span>
                                             <div class="thumb">
                                                 <a href="single-product.html" class="image">
-                                                    <img src="{{ n_product.image.url }}" alt="Product" />
-                                                    <img class="hover-image" src="{{ n_product.image.url }}" alt="Product" />
+                                                    <img src="{{ product.image.url }}" alt="Product" />
+                                                    <img class="hover-image" src="{{ product.image.url }}" alt="Product" />
                                                 </a>
                                             </div>
                                             <div class="content">
-                                                <span class="category"><a href="#">{{ n_product.category }}</a></span>
-                                                <h5 class="title"><a href="single-product.html">{{ n_product.name }}
+                                                <span class="category"><a href="#">{{ product.category }}</a></span>
+                                                <h5 class="title"><a href="single-product.html">{{ product.name }}
                                                     </a>
                                                 </h5>
                                                 <span class="price">
-                                                    <span class="new">${{n_product.price}}</span>
+                                                    <span class="new">${{product.price}}</span>
                                                 </span>
                                             </div>
                                             <div class="actions">
@@ -401,6 +295,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% endif %}
                                     {% endfor %}
                                     <!-- <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                         <div class="product">
@@ -450,7 +345,7 @@
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 text-center">
                         <h2 class="title"> <span>Smart Fashion</span> With Smart Devices </h2>
-                        <a href="{% url 'products' %}" class="btn btn-primary text-capitalize m-auto">Shop All Devices</a>
+                        <a href="{% url 'products_page' %}" class="btn btn-primary text-capitalize m-auto">Shop All Devices</a>
                     </div>
                 </div>
             </div>

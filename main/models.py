@@ -1,8 +1,10 @@
+from distutils.command.upload import upload
 from django.core.management.base import BaseCommand
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import CASCADE
 import datetime
+from django_extensions.db.fields import AutoSlugField
 
 
 class Category(models.Model):
@@ -20,24 +22,26 @@ class Product(models.Model):
     price = models.PositiveIntegerField()
     discount = models.PositiveIntegerField(default=0)
     # old_price = models.PositiveIntegerField(null=True, blank=True)
-    slug = models.SlugField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     new  = models.BooleanField(default=True, blank=True),
     qrcode = models.ImageField(upload_to='product_qrcodes/', blank=True, null=True)
     new = models.BooleanField(default=True, null=True, blank=True)
+    slug = AutoSlugField(blank=True, unique=True, populate_from=['name', 'characters', 'category', 'price', 'created_date'])
 
+    def __str__(self):
+        return self.name
+    
+
+class Brands(models.Model):
+    image = models.ImageField(upload_to='brand_images/')
+    name = models.CharField(max_length=30)
+    categories = models.ManyToManyField(Category)
+    
     def __str__(self):
         return self.name
     
     
 
-
-class Command(BaseCommand):
-
-    help = 'Expires event objects which are out-of-date'
-
-    def handle_noargs(self):
-        return Product.objects.filter(created_date__lt=datetime.datetime.now() - datetime.timedelta(hours=20)).delete()
     
 class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
